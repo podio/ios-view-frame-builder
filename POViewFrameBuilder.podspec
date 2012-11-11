@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "POViewFrameBuilder"
   s.version      = "1.0.0"
-  s.summary      = "A small library for semantic layout of UIViews.."
+  s.summary      = "A small library for semantic layout of UIViews."
   s.homepage     = "https://github.com/podio/POViewFrameBuilder"
   s.license      = 'MIT'
   s.author       = { "Sebastian Rehnby" => "sebastian@podio.com" }
