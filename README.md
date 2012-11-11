@@ -6,11 +6,11 @@ It is by no means complete, but rather contains a number of methods I have happe
 
 # Usage
 
-The following two examples give you a brief introduction on how POViewFrameBuilder can be used. Just include the `UIView+POViewFrameBuilder.h` where you want to use it, and then you can access the `po_frameBuilder` convenience property to instantiate a frame builder for any `UIView` subclass.
+The following two examples give you a brief introduction on how POViewFrameBuilder can be used. Just include the `UIView+POViewFrameBuilder.h` category where you want to use it, and then you can access the `po_frameBuilder` convenience property to instantiate a frame builder for any `UIView` subclass.
 
 Resizing a view:
 
-		[view.po_frameBuilder setWidth:100.0f height:40.0f];
+    [view.po_frameBuilder setWidth:100.0f height:40.0f];
 
 Moving a view to be centered within it's superview:
 
@@ -18,7 +18,7 @@ Moving a view to be centered within it's superview:
 
 You can combine these methods to your own liking:
 
-		[[self.po_frameBuilder setWidth:100.0f height:40.0f] centerHorizontallyInSuperview];
+    [[self.po_frameBuilder setWidth:100.0f height:40.0f] centerHorizontallyInSuperview];
 
 # Demo
 
