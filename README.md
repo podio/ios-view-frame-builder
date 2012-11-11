@@ -18,7 +18,7 @@ Moving a view to be centered within it's superview:
 
 You can combine these methods to your own liking:
 
-	[[self.po_frameBuilder setWidth:100.0f height:40.0f] centerHorizontallyInSuperview];
+	[[view.po_frameBuilder setWidth:100.0f height:40.0f] centerHorizontallyInSuperview];
 
 # Demo
 
