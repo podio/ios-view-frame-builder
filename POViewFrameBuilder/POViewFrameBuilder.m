@@ -8,6 +8,13 @@
 #import "POViewFrameBuilder.h"
 #import "POGeometry.h"
 
+typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
+  POViewFrameBuilderEdgeTop,
+  POViewFrameBuilderEdgeBottom,
+  POViewFrameBuilderEdgeLeft,
+  POViewFrameBuilderEdgeRight,
+};
+
 @interface POViewFrameBuilder ()
 
 @property (nonatomic) CGRect frame;

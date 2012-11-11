@@ -7,13 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
-  POViewFrameBuilderEdgeTop,
-  POViewFrameBuilderEdgeBottom,
-  POViewFrameBuilderEdgeLeft,
-  POViewFrameBuilderEdgeRight,
-};
-
 @interface POViewFrameBuilder : NSObject
 
 @property (nonatomic, weak, readonly) UIView *view;
