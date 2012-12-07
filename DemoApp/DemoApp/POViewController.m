@@ -28,15 +28,17 @@ static CGFloat kEdgeInset = 10.0f;
   
   [UIView animateWithDuration:kAnimationDuration animations:^{
     // Left and resize
-    [[[[self.squareView.po_frameBuilder disableAutoCommit]
-      setSizeWithWidth:60.0f height:60.0f]
-      alignLeftInSuperviewWithInset:kEdgeInset] commit];
+    [self.squareView.po_frameBuilder update:^(POViewFrameBuilder *builder) {
+      [builder setSizeWithWidth:60.0f height:60.0f];
+      [builder alignLeftInSuperviewWithInset:kEdgeInset];
+    }];
   } completion:^(BOOL finished) {
     [UIView animateWithDuration:kAnimationDuration animations:^{
       // Center at top
-      [[[[self.squareView.po_frameBuilder disableAutoCommit]
-        centerHorizontallyInSuperview]
-        alignToTopInSuperviewWithInset:kEdgeInset] commit];
+      [self.squareView.po_frameBuilder update:^(POViewFrameBuilder *builder) {
+        [builder centerHorizontallyInSuperview];
+        [builder alignToTopInSuperviewWithInset:kEdgeInset];
+      }];
     } completion:^(BOOL finished) {
       [UIView animateWithDuration:kAnimationDuration animations:^{
         // Right
