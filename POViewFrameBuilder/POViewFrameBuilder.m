@@ -145,7 +145,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
     return self;
   }
 
-  self.frame = PORectWithX(self.frame, floorf((self.view.superview.bounds.size.width - self.frame.size.width) / 2));
+  self.frame = PORectWithX(self.frame, roundf((self.view.superview.bounds.size.width - self.frame.size.width) / 2));
 
   return self;
 }
@@ -155,7 +155,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
     return self;
   }
 
-  self.frame = PORectWithY(self.frame, floorf((self.view.superview.bounds.size.height - self.frame.size.height) / 2));
+  self.frame = PORectWithY(self.frame, roundf((self.view.superview.bounds.size.height - self.frame.size.height) / 2));
 
   return self;
 }

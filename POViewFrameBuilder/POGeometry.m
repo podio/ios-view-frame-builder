@@ -59,7 +59,7 @@ CGPoint POPointWithOffset(CGPoint p, CGFloat dx, CGFloat dy) {
 }
 
 CGPoint POPointCenterInSize(CGSize s) {
-  return CGPointMake(floorf(s.width / 2), floorf(s.height / 2));
+  return CGPointMake(roundf(s.width / 2), roundf(s.height / 2));
 }
 
 CGRect PORectMove(CGRect rect, CGFloat dx, CGFloat dy) {
