@@ -25,3 +25,10 @@ You can combine these methods to your own liking:
 The DemoApp project shows how POViewFrameBuilder can be used in animation blocks. One thing to note is that by default, the `automaticallyCommitChanges` property is set to `YES`. This means that the frame changes are committed after every modifying method in the chain. However, having multiple frame changes in an animation doesn't work, and the view ends up jumping around. To avoid this, begin the method chain by calling `disableAutoCommit` and finish the series of changes by calling the `commit` method, which will update the view's frame:
 
 	[[[[view.po_frameBuilder disableAutoCommit] setWidth:100.0f height:40.0f] centerHorizontallyInSuperview] commit];
+	
+Thanks to [@rsobik](https://github.com/rsobik), there is now also a shorter and more readable way to create these transactions:
+
+	[self.squareView.po_frameBuilder update:^(POViewFrameBuilder *builder) {
+		[builder setWidth:100.0f height:40.0f];
+		[builder centerHorizontallyInSuperview];
+	}];
