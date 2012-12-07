@@ -5,18 +5,18 @@
 //  Copyright (c) 2012 Citrix Systems, Inc. All rights reserved.
 //
 
-CGRect PORectInsets(CGRect rect, CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
+extern inline CGRect PORectInsets(CGRect rect, CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
 
-CGRect PORectFromSize(CGFloat width, CGFloat height);
-CGRect PORectWithSize(CGRect rect, CGFloat width, CGFloat height);
-CGRect PORectWithWidth(CGRect rect, CGFloat width);
-CGRect PORectWithHeight(CGRect rect, CGFloat height);
+extern inline CGRect PORectFromSize(CGFloat width, CGFloat height);
+extern inline CGRect PORectWithSize(CGRect rect, CGFloat width, CGFloat height);
+extern inline CGRect PORectWithWidth(CGRect rect, CGFloat width);
+extern inline CGRect PORectWithHeight(CGRect rect, CGFloat height);
 
-CGRect PORectWithOrigin(CGRect rect, CGFloat x, CGFloat y);
-CGRect PORectWithX(CGRect rect, CGFloat x);
-CGRect PORectWithY(CGRect rect, CGFloat y);
+extern inline CGRect PORectWithOrigin(CGRect rect, CGFloat x, CGFloat y);
+extern inline CGRect PORectWithX(CGRect rect, CGFloat x);
+extern inline CGRect PORectWithY(CGRect rect, CGFloat y);
 
-CGPoint POPointWithOffset(CGPoint p, CGFloat dx, CGFloat dy);
-CGPoint POPointCenterInSize(CGSize s);
+extern inline CGPoint POPointWithOffset(CGPoint p, CGFloat dx, CGFloat dy);
+extern inline CGPoint POPointCenterInSize(CGSize s);
 
-CGRect PORectMove(CGRect rect, CGFloat dx, CGFloat dy);
+extern inline CGRect PORectMove(CGRect rect, CGFloat dx, CGFloat dy);
