@@ -8,6 +8,11 @@
 #import "POViewFrameBuilder.h"
 #import "POGeometry.h"
 
+// We define NS_ENUM in case we build for iOS 5
+#ifndef NS_ENUM
+#define NS_ENUM(_type, _name) enum _name : _type _name; enum _name : _type
+#endif
+
 typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   POViewFrameBuilderEdgeTop,
   POViewFrameBuilderEdgeBottom,
@@ -41,7 +46,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
 
 - (void)setFrame:(CGRect)frame {
   _frame = frame;
-  
+
   if (self.automaticallyCommitChanges) {
     [self commit];
   }
@@ -59,15 +64,15 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
 
 - (POViewFrameBuilder *)performChangesInGroupWithBlock:(void (^)(void))block {
   BOOL automaticCommitEnabled = self.automaticallyCommitChanges;
-  
+
   self.automaticallyCommitChanges = NO;
   block();
   self.automaticallyCommitChanges = automaticCommitEnabled;
-  
+
   if (self.automaticallyCommitChanges) {
     [self commit];
   }
-  
+
   return self;
 }
 
@@ -75,13 +80,13 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
 
 - (POViewFrameBuilder *)enableAutoCommit {
   self.automaticallyCommitChanges = YES;
-  
+
   return self;
 }
 
 - (POViewFrameBuilder *)disableAutoCommit {
   self.automaticallyCommitChanges = NO;
-  
+
   return self;
 }
 
@@ -89,13 +94,13 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
 
 - (POViewFrameBuilder *)setX:(CGFloat)x {
   self.frame = PORectWithX(self.frame, x);
-  
+
   return self;
 }
 
 - (POViewFrameBuilder *)setY:(CGFloat)y {
   self.frame = PORectWithY(self.frame, y);
-  
+
   return self;
 }
 
@@ -107,13 +112,13 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
 
 - (POViewFrameBuilder *)moveWithOffsetX:(CGFloat)offsetX {
   self.frame = PORectWithX(self.frame, self.frame.origin.x + offsetX);
-  
+
   return self;
 }
 
 - (POViewFrameBuilder *)moveWithOffsetY:(CGFloat)offsetY {
   self.frame = PORectWithY(self.frame, self.frame.origin.y + offsetY);
-  
+
   return self;
 }
 
@@ -133,9 +138,9 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   if (!self.view.superview) {
     return self;
   }
-  
+
   self.frame = PORectWithX(self.frame, floorf((self.view.superview.bounds.size.width - self.frame.size.width) / 2));
-  
+
   return self;
 }
 
@@ -143,7 +148,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   if (!self.view.superview) {
     return self;
   }
-  
+
   self.frame = PORectWithY(self.frame, floorf((self.view.superview.bounds.size.height - self.frame.size.height) / 2));
 
   return self;
@@ -151,26 +156,26 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
 
 - (POViewFrameBuilder *)alignToTopInSuperviewWithInset:(CGFloat)inset {
   [self alignToTopInSuperviewWithInsets:UIEdgeInsetsMake(inset, 0.0f, 0.0f, 0.0f)];
-  
+
   return self;
 }
 
 - (POViewFrameBuilder *)alignToBottomInSuperviewWithInset:(CGFloat)inset {
   [self alignToBottomInSuperviewWithInsets:UIEdgeInsetsMake(0.0f, 0.0f, inset, 0.0f)];
-  
+
   return self;
 }
 
 - (POViewFrameBuilder *)alignLeftInSuperviewWithInset:(CGFloat)inset {
   [self alignLeftInSuperviewWithInsets:UIEdgeInsetsMake(0.0f, inset, 0.0f, 0.0f)];
-  
+
   return self;
 
 }
 
 - (POViewFrameBuilder *)alignRightInSuperviewWithInset:(CGFloat)inset {
   [self alignRightInSuperviewWithInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, inset)];
-  
+
   return self;
 }
 
@@ -178,7 +183,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   self.frame = PORectWithOrigin(self.frame,
                                 self.frame.origin.x + insets.left - insets.right,
                                 insets.top - insets.bottom);
-  
+
   return self;
 }
 
@@ -186,7 +191,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   self.frame = PORectWithOrigin(self.frame,
                                 self.frame.origin.x + insets.left - insets.right,
                                 self.view.superview.bounds.size.height - self.frame.size.height + insets.top - insets.bottom);
-  
+
   return self;
 }
 
@@ -194,7 +199,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   self.frame = PORectWithOrigin(self.frame,
                                 insets.left - insets.right,
                                 self.frame.origin.y + insets.top - insets.bottom);
-  
+
   return self;
 }
 
@@ -202,13 +207,13 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   self.frame = PORectWithOrigin(self.frame,
                                 self.view.superview.bounds.size.width - self.frame.size.width + insets.left - insets.right,
                                 self.frame.origin.y + insets.top - insets.bottom);
-  
+
   return self;
 }
 
 - (POViewFrameBuilder *)alignToView:(UIView *)view edge:(POViewFrameBuilderEdge)edge offset:(CGFloat)offset {
   CGRect viewFrame = [view.superview convertRect:view.frame toView:self.view.superview];
-  
+
   switch (edge) {
     case POViewFrameBuilderEdgeTop:
       self.frame = PORectWithY(self.frame, viewFrame.origin.y - offset - self.frame.size.height);
@@ -225,7 +230,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
     default:
       break;
   }
-  
+
   return self;
 }
 
@@ -258,7 +263,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
       CGFloat spacing = block != nil ? block(previousView, view) : 0.0f;
       [[[self alloc] initWithView:view] alignToBottomOfView:previousView offset:spacing];
     }
-    
+
     previousView = view;
   }
 }
@@ -276,7 +281,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
       CGFloat spacing = block != nil ? block(previousView, view) : 0.0f;
       [[[self alloc] initWithView:view] alignRightOfView:previousView offset:spacing];
     }
-    
+
     previousView = view;
   }
 }
@@ -285,19 +290,19 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
 
 - (POViewFrameBuilder *)setWidth:(CGFloat)width {
   self.frame = PORectWithWidth(self.frame, width);
-  
+
   return self;
 }
 
 - (POViewFrameBuilder *)setHeight:(CGFloat)height {
   self.frame = PORectWithHeight(self.frame, height);
-  
+
   return self;
 }
 
 - (POViewFrameBuilder *)setSize:(CGSize)size {
   self.frame = PORectFromSize(size.width, size.height);
-  
+
   return self;
 }
 
@@ -311,7 +316,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   CGRect frame = self.frame;
   frame.size.width = [self.view sizeThatFits:CGSizeMake(CGFLOAT_MAX, self.frame.size.height)].width;
   self.frame = frame;
-  
+
   return self;
 }
 
@@ -319,7 +324,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   CGRect frame = self.frame;
   frame.size.height = [self.view sizeThatFits:CGSizeMake(self.frame.size.width, CGFLOAT_MAX)].height;
   self.frame = frame;
-  
+
   return self;
 }
 
