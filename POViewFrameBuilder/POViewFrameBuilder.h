@@ -18,6 +18,7 @@
 
 - (void)commit;
 - (void)reset;
+- (void)update:(void (^)(POViewFrameBuilder *builder))block;
 
 // Configure
 - (POViewFrameBuilder *)enableAutoCommit;
