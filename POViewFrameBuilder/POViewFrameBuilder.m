@@ -74,9 +74,9 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   self.automaticallyCommitChanges = NO;
   block();
   self.automaticallyCommitChanges = automaticCommitEnabled;
-    [self commit];
 
   if (self.automaticallyCommitChanges) {
+    [self commit];
   }
 
   return self;
