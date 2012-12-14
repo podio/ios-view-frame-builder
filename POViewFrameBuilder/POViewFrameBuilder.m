@@ -307,7 +307,7 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
 }
 
 - (POViewFrameBuilder *)setSize:(CGSize)size {
-  self.frame = PORectFromSize(size.width, size.height);
+  self.frame = PORectWithSize(self.frame, size.width, size.height);
 
   return self;
 }
