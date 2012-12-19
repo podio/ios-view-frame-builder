@@ -334,6 +334,17 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   return self;
 }
 
+- (POViewFrameBuilder *)setSizeToFit {
+  CGSize size = [self.view sizeThatFits:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)];
+  
+  CGRect frame = self.frame;
+  frame.size.height = size.height;
+  frame.size.width = size.width;
+  self.frame = frame;
+  
+  return self;
+}
+
 + (void)sizeToFitViews:(NSArray *)views {
   for (UIView *view in views) {
     [view sizeToFit];

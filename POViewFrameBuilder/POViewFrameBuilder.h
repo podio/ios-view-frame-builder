@@ -64,6 +64,7 @@
 - (POViewFrameBuilder *)setSizeWithWidth:(CGFloat)width height:(CGFloat)height;
 - (POViewFrameBuilder *)setSizeToFitWidth;
 - (POViewFrameBuilder *)setSizeToFitHeight;
+- (POViewFrameBuilder *)setSizeToFit;
 
 + (void)sizeToFitViews:(NSArray *)views;
 
