@@ -274,6 +274,42 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   }
 }
 
+
++ (CGFloat)heightForViewsAlignedVertically:(NSArray *)views spacing:(CGFloat)spacing {
+  return [self heightForViewsAlignedVertically:views constrainedToWidth:0.0f spacing:spacing];
+}
+
++ (CGFloat)heightForViewsAlignedVertically:(NSArray *)views spacingWithBlock:(CGFloat (^)(UIView *firstView, UIView *secondView))block {
+  return [self heightForViewsAlignedVertically:views constrainedToWidth:0.0f spacingWithBlock:block];
+}
+
++ (CGFloat)heightForViewsAlignedVertically:(NSArray *)views constrainedToWidth:(CGFloat)constrainedWidth spacing:(CGFloat)spacing {
+  return [self heightForViewsAlignedVertically:views constrainedToWidth:constrainedWidth spacingWithBlock:^CGFloat(UIView *firstView, UIView *secondView) {
+    return spacing;
+  }];
+}
+
++ (CGFloat)heightForViewsAlignedVertically:(NSArray *)views constrainedToWidth:(CGFloat)constrainedWidth spacingWithBlock:(CGFloat (^)(UIView *firstView, UIView *secondView))block {
+  CGFloat height = 0.0f;
+  
+  UIView *previousView = nil;
+  for (UIView *view in views) {
+    if (constrainedWidth > FLT_EPSILON) {
+      height += [view sizeThatFits:CGSizeMake(constrainedWidth, CGFLOAT_MAX)].height;
+    } else {
+      height += view.bounds.size.height;
+    }
+    
+    if (previousView) {
+      height += block != nil ? block(previousView, view) : 0.0f;
+    }
+    
+    previousView = view;
+  }
+  
+  return height;
+}
+
 + (void)alignViewsHorizontally:(NSArray *)views spacing:(CGFloat)spacing {
   [self alignViewsHorizontally:views spacingWithBlock:^CGFloat(UIView *firstView, UIView *secondView) {
     return spacing;
