@@ -7,6 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, POViewFrameBuilderDirection) {
+  POViewFrameBuilderDirectionRight = 0,
+  POViewFrameBuilderDirectionLeft,
+  POViewFrameBuilderDirectionUp,
+  POViewFrameBuilderDirectionDown,
+};
+
 @interface POViewFrameBuilder : NSObject
 
 @property (nonatomic, weak, readonly) UIView *view;
@@ -51,6 +58,9 @@
 - (POViewFrameBuilder *)alignToBottomOfView:(UIView *)view offset:(CGFloat)offset;
 - (POViewFrameBuilder *)alignLeftOfView:(UIView *)view offset:(CGFloat)offset;
 - (POViewFrameBuilder *)alignRightOfView:(UIView *)view offset:(CGFloat)offset;
+
++ (void)alignViews:(NSArray *)views direction:(POViewFrameBuilderDirection)direction spacing:(CGFloat)spacing;
++ (void)alignViews:(NSArray *)views direction:(POViewFrameBuilderDirection)direction spacingWithBlock:(CGFloat (^)(UIView *firstView, UIView *secondView))block;
 
 + (void)alignViewsVertically:(NSArray *)views spacing:(CGFloat)spacing;
 + (void)alignViewsVertically:(NSArray *)views spacingWithBlock:(CGFloat (^)(UIView *firstView, UIView *secondView))block;

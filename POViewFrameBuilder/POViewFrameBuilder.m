@@ -256,6 +256,40 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   return [self alignToView:view edge:POViewFrameBuilderEdgeRight offset:offset];
 }
 
++ (void)alignViews:(NSArray *)views direction:(POViewFrameBuilderDirection)direction spacing:(CGFloat)spacing {
+  return [self alignViews:views direction:direction spacingWithBlock:^CGFloat(UIView *firstView, UIView *secondView) {
+    return spacing;
+  }];;
+}
+
++ (void)alignViews:(NSArray *)views direction:(POViewFrameBuilderDirection)direction spacingWithBlock:(CGFloat (^)(UIView *firstView, UIView *secondView))block {
+  UIView *previousView = nil;
+  for (UIView *view in views) {
+    if (previousView) {
+      CGFloat spacing = block != nil ? block(previousView, view) : 0.0f;
+      
+      switch (direction) {
+        case POViewFrameBuilderDirectionRight:
+          [[[self alloc] initWithView:view] alignRightOfView:previousView offset:spacing];
+          break;
+        case POViewFrameBuilderDirectionLeft:
+          [[[self alloc] initWithView:view] alignLeftOfView:previousView offset:spacing];
+          break;
+        case POViewFrameBuilderDirectionUp:
+          [[[self alloc] initWithView:view] alignToTopOfView:previousView offset:spacing];
+          break;
+        case POViewFrameBuilderDirectionDown:
+          [[[self alloc] initWithView:view] alignToBottomOfView:previousView offset:spacing];
+          break;
+        default:
+          break;
+      }
+    }
+    
+    previousView = view;
+  }
+}
+
 + (void)alignViewsVertically:(NSArray *)views spacing:(CGFloat)spacing {
   [self alignViewsVertically:views spacingWithBlock:^CGFloat(UIView *firstView, UIView *secondView) {
     return spacing;
@@ -263,17 +297,18 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
 }
 
 + (void)alignViewsVertically:(NSArray *)views spacingWithBlock:(CGFloat (^)(UIView *firstView, UIView *secondView))block {
-  UIView *previousView = nil;
-  for (UIView *view in views) {
-    if (previousView) {
-      CGFloat spacing = block != nil ? block(previousView, view) : 0.0f;
-      [[[self alloc] initWithView:view] alignToBottomOfView:previousView offset:spacing];
-    }
-
-    previousView = view;
-  }
+  [self alignViews:views direction:POViewFrameBuilderDirectionDown spacingWithBlock:block];
 }
 
++ (void)alignViewsHorizontally:(NSArray *)views spacing:(CGFloat)spacing {
+  [self alignViewsHorizontally:views spacingWithBlock:^CGFloat(UIView *firstView, UIView *secondView) {
+    return spacing;
+  }];
+}
+
++ (void)alignViewsHorizontally:(NSArray *)views spacingWithBlock:(CGFloat (^)(UIView *firstView, UIView *secondView))block {
+  [self alignViews:views direction:POViewFrameBuilderDirectionRight spacingWithBlock:block];
+}
 
 + (CGFloat)heightForViewsAlignedVertically:(NSArray *)views spacing:(CGFloat)spacing {
   return [self heightForViewsAlignedVertically:views constrainedToWidth:0.0f spacing:spacing];
@@ -308,24 +343,6 @@ typedef NS_ENUM(NSUInteger, POViewFrameBuilderEdge) {
   }
   
   return height;
-}
-
-+ (void)alignViewsHorizontally:(NSArray *)views spacing:(CGFloat)spacing {
-  [self alignViewsHorizontally:views spacingWithBlock:^CGFloat(UIView *firstView, UIView *secondView) {
-    return spacing;
-  }];
-}
-
-+ (void)alignViewsHorizontally:(NSArray *)views spacingWithBlock:(CGFloat (^)(UIView *firstView, UIView *secondView))block {
-  UIView *previousView = nil;
-  for (UIView *view in views) {
-    if (previousView) {
-      CGFloat spacing = block != nil ? block(previousView, view) : 0.0f;
-      [[[self alloc] initWithView:view] alignRightOfView:previousView offset:spacing];
-    }
-
-    previousView = view;
-  }
 }
 
 #pragma mark - Resize
