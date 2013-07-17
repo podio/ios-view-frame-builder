@@ -18,7 +18,6 @@
 		50A095FD164FD7A80096E97A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50A095FC164FD7A80096E97A /* Default-568h@2x.png */; };
 		50A09600164FD7A80096E97A /* POViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A095FF164FD7A80096E97A /* POViewController.m */; };
 		50A09603164FD7A80096E97A /* POViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50A09601164FD7A80096E97A /* POViewController.xib */; };
-		50A09632164FE0770096E97A /* POGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A0962D164FE0770096E97A /* POGeometry.m */; };
 		50A09633164FE0770096E97A /* POViewFrameBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A0962F164FE0770096E97A /* POViewFrameBuilder.m */; };
 		50A09634164FE0770096E97A /* UIView+POViewFrameBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A09631164FE0770096E97A /* UIView+POViewFrameBuilder.m */; };
 /* End PBXBuildFile section */
@@ -42,7 +41,6 @@
 		50A09602164FD7A80096E97A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/POViewController.xib; sourceTree = "<group>"; };
 		50A0960A164FD7A80096E97A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		50A0962C164FE0770096E97A /* POGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POGeometry.h; sourceTree = "<group>"; };
-		50A0962D164FE0770096E97A /* POGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POGeometry.m; sourceTree = "<group>"; };
 		50A0962E164FE0770096E97A /* POViewFrameBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POViewFrameBuilder.h; sourceTree = "<group>"; };
 		50A0962F164FE0770096E97A /* POViewFrameBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POViewFrameBuilder.m; sourceTree = "<group>"; };
 		50A09630164FE0770096E97A /* UIView+POViewFrameBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+POViewFrameBuilder.h"; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				50A0962C164FE0770096E97A /* POGeometry.h */,
-				50A0962D164FE0770096E97A /* POGeometry.m */,
 				50A0962E164FE0770096E97A /* POViewFrameBuilder.h */,
 				50A0962F164FE0770096E97A /* POViewFrameBuilder.m */,
 				50A09630164FE0770096E97A /* UIView+POViewFrameBuilder.h */,
@@ -203,7 +200,6 @@
 				50A095F3164FD7A80096E97A /* main.m in Sources */,
 				50A095F7164FD7A80096E97A /* POAppDelegate.m in Sources */,
 				50A09600164FD7A80096E97A /* POViewController.m in Sources */,
-				50A09632164FE0770096E97A /* POGeometry.m in Sources */,
 				50A09633164FE0770096E97A /* POViewFrameBuilder.m in Sources */,
 				50A09634164FE0770096E97A /* UIView+POViewFrameBuilder.m in Sources */,
 			);
@@ -322,6 +318,7 @@
 				50A0961D164FD7A90096E97A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
