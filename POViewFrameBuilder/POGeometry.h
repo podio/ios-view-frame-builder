@@ -67,3 +67,9 @@ static inline CGRect PORectMove(CGRect rect, CGFloat dx, CGFloat dy) {
   
   return rect;
 }
+
+static inline CGSize POEdgeInsetsInsetSize(CGSize size, UIEdgeInsets insets) {
+  size.width  -= (insets.left + insets.right);
+  size.height -= (insets.top  + insets.bottom);
+  return size;
+}
