@@ -61,11 +61,17 @@ static inline CGPoint POPointCenterInSize(CGSize s) {
   return CGPointMake(roundf(s.width / 2), roundf(s.height / 2));
 }
 
+static inline CGPoint POPointIntegral(CGPoint point) {
+  point.x = floorf(point.x);
+  point.y = floorf(point.y);
+  return point;
+}
+
 static inline CGPoint PORectCenter(CGRect rect) {
-  return (CGPoint){
+  return POPointIntegral((CGPoint){
     .x = CGRectGetMidX(rect),
     .y = CGRectGetMidY(rect)
-  };
+  });
 }
 
 static inline CGRect PORectMove(CGRect rect, CGFloat dx, CGFloat dy) {
