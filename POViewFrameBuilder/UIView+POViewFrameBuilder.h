@@ -10,6 +10,9 @@
 
 @interface UIView (POViewFrameBuilder)
 
-@property (nonatomic, strong, readonly) POViewFrameBuilder *po_frameBuilder;
+/**
+ * Convenience method to return a new frame builder for this view.
+ */
+- (POViewFrameBuilder *)po_frameBuilder;
 
 @end
