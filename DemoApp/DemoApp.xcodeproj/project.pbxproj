@@ -13,9 +13,6 @@
 		50A095F1164FD7A80096E97A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50A095EF164FD7A80096E97A /* InfoPlist.strings */; };
 		50A095F3164FD7A80096E97A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A095F2164FD7A80096E97A /* main.m */; };
 		50A095F7164FD7A80096E97A /* POAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A095F6164FD7A80096E97A /* POAppDelegate.m */; };
-		50A095F9164FD7A80096E97A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50A095F8164FD7A80096E97A /* Default.png */; };
-		50A095FB164FD7A80096E97A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50A095FA164FD7A80096E97A /* Default@2x.png */; };
-		50A095FD164FD7A80096E97A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50A095FC164FD7A80096E97A /* Default-568h@2x.png */; };
 		50A09600164FD7A80096E97A /* POViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A095FF164FD7A80096E97A /* POViewController.m */; };
 		50A09603164FD7A80096E97A /* POViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50A09601164FD7A80096E97A /* POViewController.xib */; };
 		50A09633164FE0770096E97A /* POViewFrameBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A0962F164FE0770096E97A /* POViewFrameBuilder.m */; };
@@ -33,9 +30,6 @@
 		50A095F4164FD7A80096E97A /* DemoApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoApp-Prefix.pch"; sourceTree = "<group>"; };
 		50A095F5164FD7A80096E97A /* POAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = POAppDelegate.h; sourceTree = "<group>"; };
 		50A095F6164FD7A80096E97A /* POAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = POAppDelegate.m; sourceTree = "<group>"; };
-		50A095F8164FD7A80096E97A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		50A095FA164FD7A80096E97A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		50A095FC164FD7A80096E97A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		50A095FE164FD7A80096E97A /* POViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = POViewController.h; sourceTree = "<group>"; };
 		50A095FF164FD7A80096E97A /* POViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = POViewController.m; sourceTree = "<group>"; };
 		50A09602164FD7A80096E97A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/POViewController.xib; sourceTree = "<group>"; };
@@ -110,9 +104,6 @@
 				50A095EF164FD7A80096E97A /* InfoPlist.strings */,
 				50A095F2164FD7A80096E97A /* main.m */,
 				50A095F4164FD7A80096E97A /* DemoApp-Prefix.pch */,
-				50A095F8164FD7A80096E97A /* Default.png */,
-				50A095FA164FD7A80096E97A /* Default@2x.png */,
-				50A095FC164FD7A80096E97A /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -183,9 +174,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				50A095F1164FD7A80096E97A /* InfoPlist.strings in Resources */,
-				50A095F9164FD7A80096E97A /* Default.png in Resources */,
-				50A095FB164FD7A80096E97A /* Default@2x.png in Resources */,
-				50A095FD164FD7A80096E97A /* Default-568h@2x.png in Resources */,
 				50A09603164FD7A80096E97A /* POViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
